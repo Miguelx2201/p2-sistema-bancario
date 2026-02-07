@@ -21,6 +21,7 @@ public abstract class Cuenta {
      * @throws Exception -> Excepciones si hubo errores en el monto a depositar
      */
     public boolean depositar(double valor) throws Exception {
+        if(estado == EstadoCuenta.BLOQUEADA) throw new Exception("Su cuenta esta bloqueada");
         if(valor < 0) throw new Exception("El saldo a depositar no puede ser negativo");
         if(valor == 0) throw  new Exception("El saldo a depositar no puede ser cero");
         this.saldo += valor;
