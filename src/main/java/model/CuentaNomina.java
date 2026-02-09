@@ -54,6 +54,17 @@ public class CuentaNomina extends Cuenta{
     }
 
     /**
+     * Metodo que hace la transicion de una cuenta de tipo nomina a tipo corriente.
+     * @return
+     */
+    public Cuenta validarTipoDeCuenta() {
+        if(validarSalarioTresMeses()){
+            return new CuentaCorriente(titular, saldo, fechaApertura, estado);
+        }
+        return this;
+    }
+
+    /**
      * Metodo para retirar dinero de la cuenta.
      * @param valor -> Valor a retirar
      * @return
