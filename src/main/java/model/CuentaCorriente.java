@@ -9,11 +9,11 @@ public class CuentaCorriente extends Cuenta{
     }
 
     /**
-     * Metodo para validar el sobregiro. (Falta por realizar)
+     * Metodo para validar el sobregiro.
      * @return -> True si el sobregiro actual es valido, False en caso contrario.
      */
     public boolean validarSobregiro() {
-        return false;
+        return saldo >= -500000;
     }
 
     /**
@@ -41,6 +41,11 @@ public class CuentaCorriente extends Cuenta{
      */
     @Override
     public boolean retirar(double valor) throws Exception {
-        return false;
+        if(valor == 0) throw new Exception("Ingrese un valor valido para retirar");
+        if(valor < 0) throw new Exception("No es posible retirar cantidades negativas");
+        double retiro = saldo - valor;
+        if(retiro < -500000) throw new Exception("Saldo insuficiente");
+        saldo -= valor;
+        return true;
     }
 }

@@ -24,21 +24,27 @@ public class CuentaAhorros extends Cuenta{
     }
 
     /**
-     * Metodo que valida el sobre giro. (Falta por realizar)
-     * @return
+     * Metodo que valida el sobre giro.
+     * @return -> True si es valido, es decir no hay sobregiro
      */
     public boolean validarSobregiro() {
-        return false;
+        return saldo>=0;
     }
 
     /**
-     * Metodo para retirar de una cuenta de ahorros. (Falta por realizar)
+     * Metodo para retirar de una cuenta de ahorros.
      * @param valor -> Valor a retirar
      * @return
      * @throws Exception
      */
     @Override
     public boolean retirar(double valor) throws Exception {
-        return false;
+        if(valor == 0) throw new Exception("Ingrese un valor valido para retirar");
+        if(valor < 0) throw new Exception("No es posible retirar cantidades negativas");
+        double retiro = saldo - valor;
+        if(retiro < 0) throw new Exception("Saldo insuficiente");
+        if(retiro >= 0 && retiro < 100000) throw new Exception("No cumple con la norma del saldo minimo");
+        saldo -= valor;
+        return true;
     }
 }

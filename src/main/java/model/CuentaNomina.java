@@ -54,13 +54,18 @@ public class CuentaNomina extends Cuenta{
     }
 
     /**
-     * Metodo para retirar dinero de la cuenta. (Falta por realizar)
+     * Metodo para retirar dinero de la cuenta.
      * @param valor -> Valor a retirar
      * @return
      * @throws Exception
      */
     @Override
     public boolean retirar(double valor) throws Exception {
-        return false;
+        if(valor == 0) throw new Exception("Ingrese un valor valido para retirar");
+        if(valor < 0) throw new Exception("No es posible retirar cantidades negativas");
+        double retiro = saldo - valor;
+        if(retiro < 0) throw new Exception("Saldo insuficiente");
+        saldo -= valor;
+        return true;
     }
 }
