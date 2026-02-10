@@ -1,17 +1,25 @@
 package model;
 
+import java.util.ArrayList;
+
 public abstract class Cuenta {
     private final String numeroCuenta = asignarNumeroCuenta();
     protected String titular;
     protected double saldo;
     protected String fechaApertura;
     protected EstadoCuenta estado;
+    private ArrayList<String > transacciones;
 
     public Cuenta(String titular, double saldo, String fechaApertura, EstadoCuenta estado) {
         this.titular = titular;
         this.saldo = saldo;
         this.fechaApertura = fechaApertura;
         this.estado = estado;
+        this.transacciones = new ArrayList<>();
+    }
+
+    public String getNumeroCuenta() {
+        return numeroCuenta;
     }
 
     /**
@@ -25,6 +33,7 @@ public abstract class Cuenta {
         if(valor < 0) throw new Exception("El saldo a depositar no puede ser negativo");
         if(valor == 0) throw  new Exception("El saldo a depositar no puede ser cero");
         this.saldo += valor;
+        registrarTransaccion("Depósito", valor);
         return true;
     }
 
@@ -63,6 +72,28 @@ public abstract class Cuenta {
         info.append("Saldo: ").append(this.saldo).append("\n");
         info.append("Estado: ").append(this.estado);
         System.out.println(info.toString());
+    }
+    /**
+     * Metodo para determinar si un cliente puede acceder a un prestamo segun el comportamiento de su cuenta.
+     */
+    public abstract boolean verificarElegibilidadCredito();
+
+    /**
+     * Metodo para registrar una transacción
+     */
+    public void registrarTransaccion(String tipo, double valor) {
+        String registro = tipo + " por valor de: $" + valor + " | Saldo actual: $" + this.saldo;
+        this.transacciones.add(registro);
+    }
+
+    /**
+     * Metodo para mostrar el historial de transacciones de la cuenta
+     */
+    public void mostrarHistorial(){
+        System.out.println("Historial de transacciones");
+        for(String t:transacciones){
+            System.out.println("- "+t+"\n");
+        }
     }
 
     /**

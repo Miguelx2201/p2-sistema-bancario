@@ -14,4 +14,19 @@ class CuentaCorrienteTest {
         assertEquals(-350000,c1.getSaldo());
         LOG.info("Finalizando prueba de intento de retiro");
     }
+
+    /**
+     * test para el cobro de interés por sobregiro.
+     *
+    @Test
+    void cobrointerestTest() throws Exception {
+        LOG.info("Iniciando prueba de cobroInteres");
+        CuentaCorriente c2=new CuentaCorriente("Miguel",250000,"4 Febrero 2025",EstadoCuenta.ACTIVA);
+        c2.retirar(350000);
+        c2.cobrarInteres();
+        assertEquals(-102000,c2.getSaldo());
+        LOG.info("Finalizando prueba de cobroInteres");
+
+    }
+    */
 }

@@ -8,6 +8,7 @@ public class CuentaNomina extends Cuenta{
         super(titular, saldo, fechaApertura, estado);
     }
 
+
     /**
      * Metodo que retorna True en caso de que se deba cobrar comision. Es decir que la cuenta
      * no haya recibido ningun deposito en el mes
@@ -77,6 +78,14 @@ public class CuentaNomina extends Cuenta{
         double retiro = saldo - valor;
         if(retiro < 0) throw new Exception("Saldo insuficiente");
         saldo -= valor;
+        registrarTransaccion("Retiro", valor);
         return true;
+    }
+
+    public boolean verificarElegibilidadCredito(){
+        if(numDepositosMensual>4){
+            return true;
+        }
+        return false;
     }
 }

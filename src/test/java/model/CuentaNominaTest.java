@@ -18,4 +18,14 @@ class CuentaNominaTest {
         assertInstanceOf(CuentaCorriente.class, c1.validarTipoDeCuenta());
         LOG.info("Finalizando prueba de tipo de cuenta");
     }
+
+    /*@Test
+    void cobrarComisionTest() throws Exception {
+        LOG.info("Iniciando prueba de cobrar comision");
+        CuentaNomina c2=new CuentaNomina("Catalina", 340000, "18 Enero del 2016", EstadoCuenta.ACTIVA);
+        c2.cobrarComision();
+        assertEquals(332000, c2.getSaldo());
+        LOG.info("Finalizando prueba de  cobrar comision");
+
+    }*/
 }

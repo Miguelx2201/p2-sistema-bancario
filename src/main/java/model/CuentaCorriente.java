@@ -46,6 +46,14 @@ public class CuentaCorriente extends Cuenta{
         double retiro = saldo - valor;
         if(retiro < -500000) throw new Exception("Saldo insuficiente");
         saldo -= valor;
+        registrarTransaccion("Retiro", valor);
         return true;
+    }
+
+    public boolean verificarElegibilidadCredito(){
+       if(saldo>-200000){
+        return true;
+       }
+       return false;
     }
 }
