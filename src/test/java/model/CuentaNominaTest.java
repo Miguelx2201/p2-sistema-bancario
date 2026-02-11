@@ -19,7 +19,7 @@ class CuentaNominaTest {
         LOG.info("Finalizando prueba de tipo de cuenta");
     }
 
-    /*@Test
+    @Test
     void cobrarComisionTest() throws Exception {
         LOG.info("Iniciando prueba de cobrar comision");
         CuentaNomina c2=new CuentaNomina("Catalina", 340000, "18 Enero del 2016", EstadoCuenta.ACTIVA);
@@ -27,5 +27,5 @@ class CuentaNominaTest {
         assertEquals(332000, c2.getSaldo());
         LOG.info("Finalizando prueba de  cobrar comision");
 
-    }*/
+    }
 }

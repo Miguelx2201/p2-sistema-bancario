@@ -18,6 +18,7 @@ class CuentaCorrienteTest {
     /**
      * test para el cobro de interés por sobregiro.
      *
+     *      **/
     @Test
     void cobrointerestTest() throws Exception {
         LOG.info("Iniciando prueba de cobroInteres");
@@ -28,5 +29,5 @@ class CuentaCorrienteTest {
         LOG.info("Finalizando prueba de cobroInteres");
 
     }
-    */
+
 }

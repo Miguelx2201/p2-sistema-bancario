@@ -15,7 +15,7 @@ class CuentaAhorrosTest {
         LOG.info("Finalizando prueba de intento de retiro");
     }
 
-    /*@Test
+    @Test
     void pagoInteresTest() throws Exception {
         LOG.info("Iniciando prueba de pago de interes mensual");
         CuentaAhorros c2=new CuentaAhorros("Simon",120000,"3 Abril 2023",EstadoCuenta.ACTIVA);
@@ -23,6 +23,6 @@ class CuentaAhorrosTest {
         assertEquals(120360, c2.getSaldo());
         LOG.info("Finalizando prueba de pago de interes mensual");
     }
-    */
+
 
 }
